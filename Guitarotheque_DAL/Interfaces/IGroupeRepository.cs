@@ -12,7 +12,7 @@ namespace Guitarotheque_DAL.Interfaces
         GroupeData Get(int id_Groupe);
         IEnumerable<GroupeData> GetAll();
         void Insert(GroupeData groupe);
-        void Update(GroupeData groupe);
+        void Update(GroupeData groupe, int id_Groupe);
         void Delete(int id_Groupe);
     }
 }

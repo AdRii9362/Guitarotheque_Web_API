@@ -11,7 +11,7 @@ namespace Guitarotheque_DAL.Mapper
 {
     public static class AccessoireMapper
     {
-        internal static AccessoireData DbAcessoireToDal(this IDataRecord record)
+        internal static AccessoireData DbAccessoireToDal(this IDataRecord record)
         {
             return new AccessoireData()
             {

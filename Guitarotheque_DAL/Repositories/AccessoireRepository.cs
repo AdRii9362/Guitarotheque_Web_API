@@ -30,16 +30,16 @@ namespace Guitarotheque_DAL.Repositories
 
         public AccessoireData Get(int id_Accessoire)
         {
-            Command c = new Command("SELECT * FROM Accessoires WHERE id_Accessoires = @id");
+            Command c = new Command("SELECT * FROM Accessoires WHERE Id_Accessoires = @id");
             c.AddParameter("id", id_Accessoire);
 
-            return _connection.ExecuteReader(c, ER => ER.DbAcessoireToDal()).SingleOrDefault();
+            return _connection.ExecuteReader(c, ER => ER.DbAccessoireToDal()).SingleOrDefault();
         }
 
         public IEnumerable<AccessoireData> GetAll()
         {
             Command c = new Command("SELECT * FROM Accessoires");
-            return _connection.ExecuteReader(c, ER => ER.DbAcessoireToDal());
+            return _connection.ExecuteReader(c, ER => ER.DbAccessoireToDal());
         }
 
         public void Insert(AccessoireData accessoire)
@@ -59,7 +59,7 @@ namespace Guitarotheque_DAL.Repositories
             //voir procedure stockee dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
             Command c = new Command("UpdateAccessoire", true);
 
-            c.AddParameter("Id_Accessoire", id_Accessoire);
+            c.AddParameter("Id_Accessoires", id_Accessoire);
             c.AddParameter("Description", accessoire.Description);
             c.AddParameter("Libelle", accessoire.Libelle);
             c.AddParameter("Prix", accessoire.Prix);

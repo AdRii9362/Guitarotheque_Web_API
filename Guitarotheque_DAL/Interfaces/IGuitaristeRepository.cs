@@ -12,7 +12,7 @@ namespace Guitarotheque_DAL.Interfaces
         GuitaristeData Get(int Id_Guitariste);
         IEnumerable<GuitaristeData> GetAll();
         void Insert(GuitaristeData guitariste);
-        void Update(GuitaristeData guitariste);
+        void Update(GuitaristeData guitariste, int id_Guitariste);
         void Delete(int Id_Guitariste);
     }
 }

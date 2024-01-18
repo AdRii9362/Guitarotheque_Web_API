@@ -18,9 +18,9 @@ IAccessoireRepository access = new AccessoireRepository(co);
 #region InsertAccessoire
 //AccessoireData accessoire = new AccessoireData()
 //{
-//    Libelle = "Accordeur",
-//    Description = "Sert à accorder",
-//    Prix = 50.50M
+//    Libelle = "Siege",
+//    Description = "Sert à s'asseoir",
+//    Prix = 200.99M
 //};
 
 //access.Insert(accessoire);
@@ -60,7 +60,7 @@ IAccessoireRepository access = new AccessoireRepository(co);
 #region GetAllAccessoire
 IEnumerable<AccessoireData> accessoire = access.GetAll();
 
-foreach(AccessoireData a in accessoire)
+foreach (AccessoireData a in accessoire)
 {
     Console.WriteLine($"Accessoire trouvé - ID: {a.Id_Accessoire}, Libelle: {a.Libelle}, Description: {a.Description}, Prix: {a.Prix}");
 
