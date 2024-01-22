@@ -59,7 +59,7 @@ namespace Guitarotheque_DAL.Repositories
             //voir procedure stockee dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
             Command c = new Command("UpdateAccessoire", true);
 
-            c.AddParameter("Id_Accessoires", id_Accessoire);
+            c.AddParameter("Id_Accessoire", id_Accessoire);
             c.AddParameter("Description", accessoire.Description);
             c.AddParameter("Libelle", accessoire.Libelle);
             c.AddParameter("Prix", accessoire.Prix);

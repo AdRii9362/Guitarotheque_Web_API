@@ -31,14 +31,14 @@ IAccessoireRepository access = new AccessoireRepository(co);
 #endregion
 
 #region UpdateAccessoire
-//AccessoireData accessoire = new AccessoireData()
-//{
-//    Libelle = "Mediator",
-//    Description = "C est vraiment un mediator",
-//    Prix = 120.50M
-//};
+AccessoireData accessoire = new AccessoireData()
+{
+    Libelle = "Modif DAL",
+    Description = "OK",
+    Prix = 120.50M
+};
 
-//access.Update(accessoire,2);
+access.Update(accessoire, 5);
 #endregion
 
 #region GetAcessoireById
@@ -58,13 +58,13 @@ IAccessoireRepository access = new AccessoireRepository(co);
 #endregion
 
 #region GetAllAccessoire
-IEnumerable<AccessoireData> accessoire = access.GetAll();
+//IEnumerable<AccessoireData> accessoire = access.GetAll();
 
-foreach (AccessoireData a in accessoire)
-{
-    Console.WriteLine($"Accessoire trouvé - ID: {a.Id_Accessoire}, Libelle: {a.Libelle}, Description: {a.Description}, Prix: {a.Prix}");
+//foreach (AccessoireData a in accessoire)
+//{
+//    Console.WriteLine($"Accessoire trouvé - ID: {a.Id_Accessoire}, Libelle: {a.Libelle}, Description: {a.Description}, Prix: {a.Prix}");
 
-}
+//}
 #endregion
 
 
