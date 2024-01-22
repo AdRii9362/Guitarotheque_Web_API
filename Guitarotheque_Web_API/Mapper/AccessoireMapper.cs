@@ -17,5 +17,16 @@ namespace Guitarotheque_Web_API.Mapper
 
             };
         }
+
+        internal static AccessoireModel ApiAccessToBll(this AccessoireForm form)
+        {
+            return new AccessoireModel()
+            {
+                Description = form.Description,
+                Libelle = form.Libelle,
+                Prix = form.Prix
+            };
+        }
+
     }
 }

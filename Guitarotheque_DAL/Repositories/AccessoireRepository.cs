@@ -54,7 +54,7 @@ namespace Guitarotheque_DAL.Repositories
             _connection.ExecuteNonQuery(c);
         }
 
-        public void Update(AccessoireData accessoire, int id_Accessoire)
+        public bool Update(AccessoireData accessoire, int id_Accessoire)
         {
             //voir procedure stockee dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
             Command c = new Command("UpdateAccessoire", true);
@@ -64,7 +64,16 @@ namespace Guitarotheque_DAL.Repositories
             c.AddParameter("Libelle", accessoire.Libelle);
             c.AddParameter("Prix", accessoire.Prix);
 
-            _connection.ExecuteNonQuery(c);
+            int NbRow = _connection.ExecuteNonQuery(c);
+
+            if (NbRow == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
     }

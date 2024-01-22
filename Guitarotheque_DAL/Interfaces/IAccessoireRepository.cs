@@ -12,7 +12,7 @@ namespace Guitarotheque_DAL.Interfaces
         AccessoireData Get(int id_Accessoire);
         IEnumerable<AccessoireData> GetAll();
         void Insert (AccessoireData accessoire);
-        void Update (AccessoireData accessoire, int id_Accessoire);
+        bool Update (AccessoireData accessoire, int id_Accessoire);
         void Delete(int id_Accessoire);
     }
 }

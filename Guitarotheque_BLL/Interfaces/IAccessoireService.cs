@@ -13,7 +13,7 @@ namespace Guitarotheque_BLL.Interfaces
         AccessoireModel Get(int id_Accessoire);
         IEnumerable<AccessoireModel> GetAll();
         void Insert(AccessoireModel accessoire);
-        void Update(AccessoireModel accessoire, int id_Accessoire);
+        bool Update(AccessoireModel accessoire, int id_Accessoire);
         void Delete(int id_Accessoire);
     }
 }
