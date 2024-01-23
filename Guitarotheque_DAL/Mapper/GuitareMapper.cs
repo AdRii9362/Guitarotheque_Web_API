@@ -14,9 +14,9 @@ namespace Guitarotheque_DAL.Mapper
         {
             return new GuitareData()
             {
-                Id_Guitare = (int)record["Id_Guitare"],
+                Id_Guitare = (int)record["Id_Guitares"],
                 Libelle = (string)record["Libelle"],
-                AnneeDeSortie = (int)record["AnneeSortie"],
+                AnneeDeSortie = (int)record["AnneeDeSortie"],
                 Description = (string)record["Description"],
                 NbrCordes = (int)record["NbrCordes"],
                 Prix = (decimal)record["Prix"]

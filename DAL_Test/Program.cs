@@ -134,3 +134,70 @@ foreach (GroupeData g in groupedata)
 
 #endregion
 
+Console.WriteLine("----------------------------------------------------------------");
+
+#region Test Guitare
+
+IGuitareRepository guitar = new GuitareRepository(co);
+
+#region InsertGuitare
+
+//GuitareData guitare = new GuitareData()
+//{
+
+//    Libelle = "ESP LTD EC-1000FR Black Satin",
+//    AnneeDeSortie = 2021,
+//    Description = "Corps en acajou\r\nManche collé en acajou\r\nTouche en ébène\r\nProfil du manche: U mince\r\n24 frettes Extra Jumbo en acier inoxydable\r\nLargeur au sillet: 42 mm\r\nDiapason: 629 mm\r\nRayon de la touche: 350 mm\r\n1 micro double bobinage EMG 81 (chevalet)\r\n1 micro double bobinage EMG 60 (manche)\r\n2 réglages de volume\r\n1 réglage de tonalité\r\nSélecteur 3 positions\r\nVibrato Floyd Rose 1000 SE\r\nMécaniques Grover\r\nAccastillage noir\r\nCordes D'Addario XL120 (.009 - .042)\r\nCouleur: Black Satin",
+//    NbrCordes = 6,
+//    Prix = 1299.00M
+//};
+
+//guitar.Insert(guitare);
+
+#endregion
+
+#region DeleteGuitare by Id
+//guitar.Delete(4);
+#endregion
+
+#region UpdateGuitare
+//GuitareData guitare = new GuitareData()
+//{
+//    Libelle = "ESP LTD EC-1000FR Black Satin",
+//    AnneeDeSortie = 2021,
+//    Description = "Corps en acajou\r\nManche collé en acajou\r\nTouche en ébène\r\nProfil du manche: U mince\r\n24 frettes Extra Jumbo en acier inoxydable\r\nLargeur au sillet: 42 mm\r\nDiapason: 629 mm\r\nRayon de la touche: 350 mm\r\n1 micro double bobinage EMG 81 (chevalet)\r\n1 micro double bobinage EMG 60 (manche)\r\n2 réglages de volume\r\n1 réglage de tonalité\r\nSélecteur 3 positions\r\nVibrato Floyd Rose 1000 SE\r\nMécaniques Grover\r\nAccastillage noir\r\nCordes D'Addario XL120 (.009 - .042)\r\nCouleur: Black Satin",
+//    NbrCordes = 6,
+//    Prix = 1399.00M
+//};
+
+//guitar.Update(guitare, 5);
+#endregion
+
+#region GetGroupeById
+//int guitareId = 5; // Remplacez par l'ID réel que vous souhaitez récupérer.
+//GuitareData guitare = new GuitareData();
+//guitare = guitar.Get(guitareId);
+
+//// Afficher les données récupérées.
+//if (guitare != null)
+//{
+//    Console.WriteLine($"Groupe trouvé - ID: {guitare.Id_Guitare}, Libelle: {guitare.Libelle}, Nombre de corde: {guitare.NbrCordes}, Description: {guitare.Description}, Annee de sortie: {guitare.AnneeDeSortie}, Prix: {guitare.Prix}");
+//}
+//else
+//{
+//    Console.WriteLine($"Aucune guitare trouvée avec l'ID {guitareId}");
+//}
+#endregion
+
+#region GetAllGuitare
+
+IEnumerable<GuitareData> guitaredata = guitar.GetAll();
+
+foreach (GuitareData gu in guitaredata)
+{
+    Console.WriteLine($"Groupe trouvé - ID: {gu.Id_Guitare}, Libelle: {gu.Libelle}, Nombre de corde: {gu.NbrCordes}, Description: {gu.Description}, Annee de sortie: {gu.AnneeDeSortie}, Prix: {gu.Prix}");
+
+}
+#endregion
+
+#endregion

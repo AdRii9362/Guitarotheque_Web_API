@@ -20,7 +20,7 @@ namespace Guitarotheque_DAL.Repositories
         }
         public void Delete(int id_Guitare)
         {
-            Command c = new Command("DELETE FROM Guitares WHERE Id_Guitare = @id");
+            Command c = new Command("DELETE FROM Guitares WHERE Id_Guitares = @id");
             c.AddParameter("id", id_Guitare);
 
             _connection.ExecuteNonQuery(c);
@@ -28,7 +28,7 @@ namespace Guitarotheque_DAL.Repositories
 
         public GuitareData Get(int id_Guitare)
         {
-            Command c = new Command("SELECT * FROM Guitares WHERE Id_Guitare = @id");
+            Command c = new Command("SELECT * FROM Guitares WHERE Id_Guitares = @id");
             c.AddParameter("id", id_Guitare);
 
             return _connection.ExecuteReader(c, ER => ER.DbGuitareToDal()).SingleOrDefault();
@@ -54,7 +54,7 @@ namespace Guitarotheque_DAL.Repositories
             _connection.ExecuteNonQuery(c);
         }
 
-        public void Update(GuitareData guitare, int id_Guitare)
+        public bool Update(GuitareData guitare, int id_Guitare)
         {
             //voir procedure stockee dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
             Command c = new Command("UpdateGuitare", true);
@@ -66,7 +66,16 @@ namespace Guitarotheque_DAL.Repositories
             c.AddParameter("Description", guitare.Description);
             c.AddParameter("Prix", guitare.Prix);
 
-            _connection.ExecuteNonQuery(c);
+            int NbRow = _connection.ExecuteNonQuery(c);
+
+            if (NbRow == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
