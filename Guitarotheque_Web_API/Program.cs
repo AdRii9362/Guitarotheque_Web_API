@@ -28,6 +28,9 @@ builder.Services.AddScoped<IAccessoireService, AccessoireService>();
 builder.Services.AddScoped<IGroupeRepository, GroupeRepository>();
 builder.Services.AddScoped<IGroupeService, GroupeService>();
 
+//builder Guitare
+builder.Services.AddScoped<IGuitareRepository, GuitareRepository>();
+builder.Services.AddScoped<IGuitareService, GuitareService>();
 
 var app = builder.Build();
 
