@@ -117,7 +117,7 @@ IGroupeRepository group = new GroupeRepository(co);
 //}
 //else
 //{
-//    Console.WriteLine($"Aucun accessoire trouvé avec l'ID {groupeId}");
+//    Console.WriteLine($"Aucun groupe trouvé avec l'ID {groupeId}");
 //}
 #endregion
 
