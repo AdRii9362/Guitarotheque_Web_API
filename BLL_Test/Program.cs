@@ -4,6 +4,7 @@ using Guitarotheque_BLL.Services;
 using Guitarotheque_DAL.Interfaces;
 using Guitarotheque_DAL.Repositories;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices;
 using Tools;
 
 string CS = @"Data Source=GOS-VDI206\TFTIC;Initial Catalog=DB_Guitarotheque;Integrated Security=True;";
@@ -143,6 +144,80 @@ IGroupeService groupeService = new GroupeService(groupeRepository);
 //foreach (GroupeModel g in groupe)
 //{
 //    Console.WriteLine($"Groupe trouvé - ID: {g.Id_Groupe}, Nom: {g.Nom}, Genre: {g.Genre}, Annee de creation: {g.AnneeCreation}");
+
+//}
+#endregion
+
+#endregion
+
+Console.WriteLine("--------------------------------------------------");
+
+#region Test Guitare
+
+IGuitareRepository guitareRepository = new GuitareRepository(co);
+IGuitareService guitareService = new GuitareService(guitareRepository);
+
+#region Insert Guitare
+
+//GuitareModel guitareModel = new GuitareModel
+//{
+//    Libelle = "test",
+//    AnneeDeSortie = 2016,
+//    Description = "test",
+//    NbrCordes = 6,
+//    Prix = 2145.00M
+//};
+
+
+//guitareService.Insert(guitareModel);
+
+#endregion
+
+#region UpdateGuitare
+
+//GuitareModel guitareModel = new GuitareModel
+//{
+//    Libelle = "Godin Radiator Faded Cream RN",
+//    AnneeDeSortie = 2019,
+//    Description = "Corps en érable argenté\r\nManche en érable argenté\r\nTouche en palissandre\r\n22 frettes\r\nDiapason: 628 mm (24,75\")\r\nLargeur au sillet: 43 mm (1,72\")\r\nRayon de la touche: 304,8 mm (12\")\r\nSillet Graph Tech Tusq\r\n2 micros double bobinage Godin Custom\r\n2 réglages de volume\r\n2 réglages de tonalité\r\nSélecteur 3 positions\r\nChevalet/cordier Wraparound\r\nMécaniques 18:1 cordes graves / 26:1 cordes aigues\r\nFinition: Semi-brillant\r\nCouleur: Trans Cream\r\nLivrée en housse",
+//    NbrCordes = 6,
+//    Prix = 1090.00M
+//};
+//guitareService.Update(guitareModel, 7);
+
+#endregion
+
+#region Delete Guitare
+
+//guitareService.Delete(8);
+
+#endregion
+
+#region GetGuitareByID
+
+//int guitareId = 7; // Remplacez par l'ID réel que vous souhaitez récupérer.
+//GuitareModel guitare = new GuitareModel();
+//guitare = guitareService.Get(guitareId);
+
+//// Afficher les données récupérées.
+//if (guitare != null)
+//{
+//    Console.WriteLine($"Guitare trouvée - ID: {guitare.Id_Guitare}, Libelle: {guitare.Libelle}, Nombre de corde: {guitare.NbrCordes}, Description: {guitare.Description}, Annee de sortie: {guitare.AnneeDeSortie}, Prix: {guitare.Prix}");
+//}
+//else
+//{
+//    Console.WriteLine($"Aucune Guitare trouvée avec l'ID {guitareId}");
+//}
+
+#endregion
+
+#region GetAllGuitare
+
+//IEnumerable<GuitareModel> guitare = guitareService.GetAll();
+
+//foreach (GuitareModel gu in guitare)
+//{
+//    Console.WriteLine($"Guitare trouvée - ID: {gu.Id_Guitare}, Libelle: {gu.Libelle}, Nombre de corde: {gu.NbrCordes}, Description: {gu.Description}, Annee de sortie: {gu.AnneeDeSortie}, Prix: {gu.Prix}");
 
 //}
 #endregion

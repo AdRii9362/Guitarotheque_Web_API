@@ -123,13 +123,13 @@ IGroupeRepository group = new GroupeRepository(co);
 
 #region GetAllGroupe
 
-IEnumerable<GroupeData> groupedata = group.GetAll();
+//IEnumerable<GroupeData> groupedata = group.GetAll();
 
-foreach (GroupeData g in groupedata)
-{
-    Console.WriteLine($"Groupe trouvé - ID: {g.Id_Groupe}, Nom: {g.Nom}, Genre: {g.Genre}, Annee de creation: {g.AnneeCreation}");
+//foreach (GroupeData g in groupedata)
+//{
+//    Console.WriteLine($"Groupe trouvé - ID: {g.Id_Groupe}, Nom: {g.Nom}, Genre: {g.Genre}, Annee de creation: {g.AnneeCreation}");
 
-}
+//}
 #endregion
 
 #endregion
@@ -173,7 +173,7 @@ IGuitareRepository guitar = new GuitareRepository(co);
 //guitar.Update(guitare, 5);
 #endregion
 
-#region GetGroupeById
+#region GetGuitareById
 //int guitareId = 5; // Remplacez par l'ID réel que vous souhaitez récupérer.
 //GuitareData guitare = new GuitareData();
 //guitare = guitar.Get(guitareId);
@@ -181,7 +181,7 @@ IGuitareRepository guitar = new GuitareRepository(co);
 //// Afficher les données récupérées.
 //if (guitare != null)
 //{
-//    Console.WriteLine($"Groupe trouvé - ID: {guitare.Id_Guitare}, Libelle: {guitare.Libelle}, Nombre de corde: {guitare.NbrCordes}, Description: {guitare.Description}, Annee de sortie: {guitare.AnneeDeSortie}, Prix: {guitare.Prix}");
+//    Console.WriteLine($"Guitare trouvée - ID: {guitare.Id_Guitare}, Libelle: {guitare.Libelle}, Nombre de corde: {guitare.NbrCordes}, Description: {guitare.Description}, Annee de sortie: {guitare.AnneeDeSortie}, Prix: {guitare.Prix}");
 //}
 //else
 //{
@@ -191,13 +191,13 @@ IGuitareRepository guitar = new GuitareRepository(co);
 
 #region GetAllGuitare
 
-IEnumerable<GuitareData> guitaredata = guitar.GetAll();
+//IEnumerable<GuitareData> guitaredata = guitar.GetAll();
 
-foreach (GuitareData gu in guitaredata)
-{
-    Console.WriteLine($"Groupe trouvé - ID: {gu.Id_Guitare}, Libelle: {gu.Libelle}, Nombre de corde: {gu.NbrCordes}, Description: {gu.Description}, Annee de sortie: {gu.AnneeDeSortie}, Prix: {gu.Prix}");
+//foreach (GuitareData gu in guitaredata)
+//{
+//    Console.WriteLine($"Guitare trouvée - ID: {gu.Id_Guitare}, Libelle: {gu.Libelle}, Nombre de corde: {gu.NbrCordes}, Description: {gu.Description}, Annee de sortie: {gu.AnneeDeSortie}, Prix: {gu.Prix}");
 
-}
+//}
 #endregion
 
 #endregion
