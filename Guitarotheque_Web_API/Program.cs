@@ -17,10 +17,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder pour la connexion
 builder.Services.AddSingleton(sp => new Connection(builder.Configuration.GetConnectionString("default")));
 
+//builder Accessoire
 builder.Services.AddScoped<IAccessoireRepository, AccessoireRepository>();
 builder.Services.AddScoped<IAccessoireService, AccessoireService>();
+
+//builder Groupe
+builder.Services.AddScoped<IGroupeRepository, GroupeRepository>();
+builder.Services.AddScoped<IGroupeService, GroupeService>();
 
 
 var app = builder.Build();

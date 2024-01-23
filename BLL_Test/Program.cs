@@ -81,7 +81,7 @@ IAccessoireService accessoireService = new AccessoireService(accessoireRepositor
 
 Console.WriteLine("--------------------------------------------------");
 
-#region Test Accessoire
+#region Test Groupe
 
 IGroupeRepository groupeRepository = new GroupeRepository(co);
 IGroupeService groupeService = new GroupeService(groupeRepository);
