@@ -52,16 +52,26 @@ namespace Guitarotheque_DAL.Repositories
             _connection.ExecuteNonQuery(c);
         }
 
-        public void Update(GroupeData groupe, int id_Groupe)
+        public bool Update(GroupeData groupe, int id_Groupe)
         {
             Command c = new Command("UpdateGroupe", true);
 
-            c.AddParameter("Id_Groupes", id_Groupe);
+            c.AddParameter("Id_Groupe", id_Groupe);
             c.AddParameter("Nom",groupe.Nom);
             c.AddParameter("Genre", groupe.Genre);
             c.AddParameter("AnneeCreation", groupe.AnneeCreation);
 
-            _connection.ExecuteNonQuery(c);
+            
+            int NbRow = _connection.ExecuteNonQuery(c);
+
+            if (NbRow == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

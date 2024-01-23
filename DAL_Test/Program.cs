@@ -12,8 +12,10 @@ string CS = @"Data Source=GOS-VDI206\TFTIC;Initial Catalog=DB_Guitarotheque;Inte
 SqlConnection sqlConnection = new SqlConnection(CS);
 Connection co = new Connection(CS);
 
-IAccessoireRepository access = new AccessoireRepository(co);
 
+#region Test Accessoire
+
+IAccessoireRepository access = new AccessoireRepository(co);
 
 #region InsertAccessoire
 //AccessoireData accessoire = new AccessoireData()
@@ -31,17 +33,17 @@ IAccessoireRepository access = new AccessoireRepository(co);
 #endregion
 
 #region UpdateAccessoire
-AccessoireData accessoire = new AccessoireData()
-{
-    Libelle = "Modif DAL",
-    Description = "OK",
-    Prix = 120.50M
-};
+//AccessoireData accessoire = new AccessoireData()
+//{
+//    Libelle = "Modif DAL",
+//    Description = "OK",
+//    Prix = 120.50M
+//};
 
-access.Update(accessoire, 5);
+//access.Update(accessoire, 5);
 #endregion
 
-#region GetAcessoireById
+#region GetAccessoireById
 //int accessoireId = 3; // Remplacez par l'ID réel que vous souhaitez récupérer.
 //AccessoireData accessoire = new AccessoireData();
 //accessoire = access.Get(accessoireId);
@@ -67,4 +69,68 @@ access.Update(accessoire, 5);
 //}
 #endregion
 
+#endregion
+
+Console.WriteLine("----------------------------------------------------------------");
+
+#region Test Groupe
+
+IGroupeRepository group = new GroupeRepository(co);
+
+#region InsertGroupe
+
+//GroupeData groupe = new GroupeData()
+//{
+//    Nom = "Test",
+//    Genre = "Rock",
+//    AnneeCreation = 1981
+//};
+
+//group.Insert(groupe);
+
+#endregion
+
+#region DeleteGroupe by Id
+//group.Delete(3);
+#endregion
+
+#region UpdateGroupe
+//GroupeData groupe = new GroupeData()
+//{
+//    Nom = "Metallica",
+//    Genre = "Rock/Metal",
+//    AnneeCreation = 1981
+//};
+
+//group.Update(groupe, 2);
+#endregion
+
+#region GetGroupeById
+//int groupeId = 2; // Remplacez par l'ID réel que vous souhaitez récupérer.
+//GroupeData groupe = new GroupeData();
+//groupe = group.Get(groupeId);
+
+//// Afficher les données récupérées.
+//if (groupe != null)
+//{
+//    Console.WriteLine($"Groupe trouvé - ID: {groupe.Id_Groupe}, Nom: {groupe.Nom}, Genre: {groupe.Genre}, Annee de creation: {groupe.AnneeCreation}");
+//}
+//else
+//{
+//    Console.WriteLine($"Aucun accessoire trouvé avec l'ID {groupeId}");
+//}
+#endregion
+
+#region GetAllGroupe
+
+IEnumerable<GroupeData> groupedata = group.GetAll();
+
+foreach (GroupeData g in groupedata)
+{
+    Console.WriteLine($"Groupe trouvé - ID: {g.Id_Groupe}, Nom: {g.Nom}, Genre: {g.Genre}, Annee de creation: {g.AnneeCreation}");
+
+}
+#endregion
+
+#endregion
 
