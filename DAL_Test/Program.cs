@@ -201,3 +201,67 @@ IGuitareRepository guitar = new GuitareRepository(co);
 #endregion
 
 #endregion
+
+Console.WriteLine("----------------------------------------------------------------");
+
+#region Test Guitariste
+
+IGuitaristeRepository guitarist = new GuitaristeRepository(co);
+
+#region InsertGuitariste
+
+//GuitaristeData guitariste = new GuitaristeData()
+//{
+
+//    Nom = "Nicolas",
+//    Prenom = "Larussa",
+//    DateNaiss = new DateTime(1996, 06, 30)
+//};
+
+//guitarist.Insert(guitariste);
+
+#endregion
+
+#region DeleteGuitariste by Id
+//guitarist.Delete(2);
+#endregion
+
+#region UpdateGuitariste
+//GuitaristeData guitariste = new GuitaristeData()
+//{
+//    Nom = "Nicolas",
+//    Prenom = "D'Addabbo",
+//    DateNaiss = new DateTime(2000, 06, 10)
+//};
+
+//guitarist.Update(guitariste, 3);
+#endregion
+
+#region GetGuitaristeById
+//int guitaristeId = 3; // Remplacez par l'ID réel que vous souhaitez récupérer.
+//GuitaristeData guitariste = new GuitaristeData();
+//guitariste = guitarist.Get(guitaristeId);
+
+//// Afficher les données récupérées.
+//if (guitariste != null)
+//{
+//    Console.WriteLine($"Guitaristes trouvés - ID: {guitariste.Id_Guitariste}, Nom: {guitariste.Nom}, Prénom: {guitariste.Prenom}, Date de naisssance: {guitariste.DateNaiss}");
+//}
+//else
+//{
+//    Console.WriteLine($"Aucun guitariste trouvé avec l'ID {guitaristeId}");
+//}
+#endregion
+
+#region GetAllGuitariste
+
+//IEnumerable<GuitaristeData> guitaristeData = guitarist.GetAll();
+
+//foreach (GuitaristeData gst in guitaristeData)
+//{
+//    Console.WriteLine($"Guitaristes trouvés - ID: {gst.Id_Guitariste}, Nom: {gst.Nom}, Prénom: {gst.Prenom}, Date de naisssance: {gst.DateNaiss}");
+
+//}
+#endregion
+
+#endregion

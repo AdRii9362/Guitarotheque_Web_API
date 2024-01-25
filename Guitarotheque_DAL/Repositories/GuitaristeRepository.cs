@@ -52,7 +52,7 @@ namespace Guitarotheque_DAL.Repositories
             _connection.ExecuteNonQuery(c);
         }
 
-        public void Update(GuitaristeData guitariste, int id_Guitariste)
+        public bool Update(GuitaristeData guitariste, int id_Guitariste)
         {
             //voir procedure stockee dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
             Command c = new Command("UpdateGuitariste", true);
@@ -62,7 +62,16 @@ namespace Guitarotheque_DAL.Repositories
             c.AddParameter("Prenom ", guitariste.Prenom);
             c.AddParameter("DateNaiss", guitariste.DateNaiss);
 
-            _connection.ExecuteNonQuery(c);
+            int NbRow = _connection.ExecuteNonQuery(c);
+
+            if (NbRow == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
     }
