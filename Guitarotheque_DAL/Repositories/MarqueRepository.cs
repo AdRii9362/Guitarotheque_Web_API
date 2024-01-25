@@ -52,7 +52,7 @@ namespace Guitarotheque_DAL.Repositories
             _connection.ExecuteNonQuery(c);
         }
 
-        public void Update(MarquesData marque, int id_Marque)
+        public bool Update(MarquesData marque, int id_Marque)
         {
             //voir procedure stockee dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
             Command c = new Command("UpdateMarque", true);
@@ -62,7 +62,16 @@ namespace Guitarotheque_DAL.Repositories
             c.AddParameter("SiegeSocial", marque.SiegeSocial);
             c.AddParameter("Description", marque.Description);
 
-            _connection.ExecuteNonQuery(c);
+            int NbRow = _connection.ExecuteNonQuery(c);
+
+            if (NbRow == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

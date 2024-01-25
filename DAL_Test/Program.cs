@@ -265,3 +265,68 @@ IGuitaristeRepository guitarist = new GuitaristeRepository(co);
 #endregion
 
 #endregion
+
+Console.WriteLine("----------------------------------------------------------------");
+
+#region Test Marques
+
+IMarqueRepository marq = new MarqueRepository(co);
+
+#region InsertMarques
+
+//MarquesData marque = new MarquesData()
+//{
+
+//    Nom = "test",
+//    SiegeSocial = "test",
+//    Description = "Qualité débutant"
+//};
+
+//marq.Insert(marque);
+
+#endregion
+
+#region DeleteMarques by Id
+//marq.Delete(3);
+#endregion
+
+#region UpdateMarques
+//MarquesData marque = new MarquesData()
+//{
+//    Nom = "Cort",
+//    SiegeSocial = "Belgique",
+//    Description = "Une Cort à 6 cort"
+//};
+
+//marq.Update(marque, 3);
+#endregion
+
+#region GetMarquesById
+//int marquesId = 2; // Remplacez par l'ID réel que vous souhaitez récupérer.
+//MarquesData marques = new MarquesData();
+//marques = marq.Get(marquesId);
+
+//// Afficher les données récupérées.
+//if (marques != null)
+//{
+//    Console.WriteLine($"Marques trouvées - ID: {marques.Id_Marques}, Nom: {marques.Nom}, Siege Social: {marques.SiegeSocial}, Description: {marques.Description}");
+//}
+//else
+//{
+//    Console.WriteLine($"Aucune marque trouvée avec l'ID {marquesId}");
+//}
+
+#endregion
+
+#region GetAllMarques
+
+//IEnumerable<MarquesData> marquesData = marq.GetAll();
+
+//foreach (MarquesData m in marquesData)
+//{
+//    Console.WriteLine($"Marques trouvées - ID: {m.Id_Marques}, Nom: {m.Nom}, Siege Social: {m.SiegeSocial}, Description: {m.Description}");
+
+//}
+#endregion
+
+#endregion

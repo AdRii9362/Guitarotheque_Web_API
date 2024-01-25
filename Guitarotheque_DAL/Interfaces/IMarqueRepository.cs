@@ -12,7 +12,7 @@ namespace Guitarotheque_DAL.Interfaces
         MarquesData Get(int id_Marque);
         IEnumerable<MarquesData> GetAll();
         void Insert (MarquesData marque);
-        void Update (MarquesData marque, int id_Marque);
+        bool Update (MarquesData marque, int id_Marque);
         void Delete (int id_Marque);
     }
 }
