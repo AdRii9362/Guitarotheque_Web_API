@@ -226,7 +226,7 @@ IGuitareService guitareService = new GuitareService(guitareRepository);
 
 Console.WriteLine("--------------------------------------------------");
 
-#region Test Guitare
+#region Test Guitariste
 
 IGuitaristeRepository guitaristeRepository = new GuitaristeRepository(co);
 IGuitaristeService guitaristeService = new GuitaristeService(guitaristeRepository);
@@ -237,7 +237,7 @@ IGuitaristeService guitaristeService = new GuitaristeService(guitaristeRepositor
 //{
 //    Nom = "Morre",
 //    Prenom = "Thierry",
-//    DateNaiss = new DateTime(1972,04,17)
+//    DateNaiss = new DateTime(1972, 04, 17)
 //};
 
 //guitaristeService.Insert(guitaristeModel);
@@ -264,19 +264,19 @@ IGuitaristeService guitaristeService = new GuitaristeService(guitaristeRepositor
 
 #region GetGuitaristeByID
 
-int guitaristeId = 3; // Remplacez par l'ID réel que vous souhaitez récupérer.
-GuitaristeModel guitariste = new GuitaristeModel();
-guitariste = guitaristeService.Get(guitaristeId);
+//int guitaristeId = 3; // Remplacez par l'ID réel que vous souhaitez récupérer.
+//GuitaristeModel guitariste = new GuitaristeModel();
+//guitariste = guitaristeService.Get(guitaristeId);
 
-// Afficher les données récupérées.
-if (guitariste != null)
-{
-    Console.WriteLine($"Guitaristes trouvés - ID: {guitariste.Id_Guitariste}, Nom: {guitariste.Nom}, Prénom: {guitariste.Prenom}, Date de naisssance: {guitariste.DateNaiss}");
-}
-else
-{
-    Console.WriteLine($"Aucun Guitariste trouvée avec l'ID {guitaristeId}");
-}
+//// Afficher les données récupérées.
+//if (guitariste != null)
+//{
+//    Console.WriteLine($"Guitaristes trouvés - ID: {guitariste.Id_Guitariste}, Nom: {guitariste.Nom}, Prénom: {guitariste.Prenom}, Date de naisssance: {guitariste.DateNaiss}");
+//}
+//else
+//{
+//    Console.WriteLine($"Aucun Guitariste trouvée avec l'ID {guitaristeId}");
+//}
 
 #endregion
 
@@ -287,6 +287,75 @@ else
 //foreach (GuitaristeModel gst in guitariste)
 //{
 //    Console.WriteLine($"Guitaristes trouvés - ID: {gst.Id_Guitariste}, Nom: {gst.Nom}, Prénom: {gst.Prenom}, Date de naisssance: {gst.DateNaiss}");
+
+//}
+#endregion
+
+#endregion
+
+Console.WriteLine("--------------------------------------------------");
+
+#region Test Marques
+
+IMarqueRepository marqueRepository = new MarqueRepository(co);
+IMarquesService marquesService = new MarquesService(marqueRepository);
+
+#region Insert Marques
+
+//MarquesModel marquesModel = new MarquesModel
+//{
+//    Nom = "ESP",
+//    SiegeSocial = "Italie",
+//    Description = "Bonne marque"
+//};
+
+//marquesService.Insert(marquesModel);
+
+#endregion
+
+#region UpdateMarques
+
+//MarquesModel marquesModel = new MarquesModel
+//{
+//    Nom = "Modif",
+//    SiegeSocial = "ok",
+//    Description = "OK"
+//};
+//marquesService.Update(marquesModel, 4);
+
+#endregion
+
+#region Delete Marques
+
+//marquesService.Delete(4);
+
+#endregion
+
+#region GetMarquesByID
+
+//int MarquesId = 2; // Remplacez par l'ID réel que vous souhaitez récupérer.
+//MarquesModel marques = new MarquesModel();
+//marques = marquesService.Get(MarquesId);
+
+//// Afficher les données récupérées.
+//if (marques != null)
+//{
+//    Console.WriteLine($"Marques trouvées - ID: {marques.Id_Marques}, Nom: {marques.Nom}, Siege Social: {marques.SiegeSocial}, Description: {marques.Description}");
+//}
+//else
+//{
+//    Console.WriteLine($"Aucune marque trouvée avec l'ID {MarquesId}");
+//}
+
+#endregion
+
+#region GetAllMarques
+
+//IEnumerable<MarquesModel> marques = marquesService.GetAll();
+
+//foreach (MarquesModel m in marques)
+//{
+//    Console.WriteLine($"Marques trouvées - ID: {m.Id_Marques}, Nom: {m.Nom}, Siege Social: {m.SiegeSocial}, Description: {m.Description}");
 
 //}
 #endregion

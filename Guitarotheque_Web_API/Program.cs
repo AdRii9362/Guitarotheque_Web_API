@@ -36,6 +36,10 @@ builder.Services.AddScoped<IGuitareService, GuitareService>();
 builder.Services.AddScoped<IGuitaristeRepository, GuitaristeRepository>();
 builder.Services.AddScoped<IGuitaristeService, GuitaristeService>();
 
+//builder Marques
+builder.Services.AddScoped<IMarqueRepository, MarqueRepository>();
+builder.Services.AddScoped<IMarquesService, MarquesService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
