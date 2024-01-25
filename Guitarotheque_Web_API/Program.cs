@@ -32,6 +32,10 @@ builder.Services.AddScoped<IGroupeService, GroupeService>();
 builder.Services.AddScoped<IGuitareRepository, GuitareRepository>();
 builder.Services.AddScoped<IGuitareService, GuitareService>();
 
+//builder Guitariste
+builder.Services.AddScoped<IGuitaristeRepository, GuitaristeRepository>();
+builder.Services.AddScoped<IGuitaristeService, GuitaristeService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
