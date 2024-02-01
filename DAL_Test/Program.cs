@@ -210,15 +210,16 @@ IGuitaristeRepository guitarist = new GuitaristeRepository(co);
 
 #region InsertGuitariste
 
-//GuitaristeData guitariste = new GuitaristeData()
-//{
+GuitaristeData guitariste = new GuitaristeData()
+{
+    Nom = "Dylan",
+    Prenom = "Vanden Bossche",
+    DateNaiss = new DateTime(1998, 09, 4)
+};
 
-//    Nom = "Nicolas",
-//    Prenom = "Larussa",
-//    DateNaiss = new DateTime(1996, 06, 30)
-//};
+List<int> idGuitares = new List<int> { 1,6,7 }; // Remplacez cette liste avec les ID de vos guitares
 
-//guitarist.Insert(guitariste);
+guitarist.Insert(guitariste, idGuitares);
 
 #endregion
 

@@ -3,6 +3,7 @@ using Guitarotheque_DAL.Interfaces;
 using Guitarotheque_DAL.Mapper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,17 +41,41 @@ namespace Guitarotheque_DAL.Repositories
             return _connection.ExecuteReader(c, ER => ER.DbGuitaristeToDal());
         }
 
-        public void Insert(GuitaristeData guitariste)
+        //public IEnumerable<GuitaristeData> GetAllWithGuitare()
+        //{
+        //    Command c = new Command("SELECT * FROM Guitaristes gst " +
+        //        "LEFT JOIN MM_Guitariste_Guitare gg ON gst.Id_Guitaristes = gg.Id_Guitaristes " +
+        //        "LEFT JOIN Guitares gu ON gg.Id_Guitares = gu.Id_Guitares Where gst.Id_Guitaristes = @id");
+        //    return _connection.ExecuteReader(c, ER => ER.DbGuitaristeToDal());
+        //}
+
+        public void Insert(GuitaristeData guitariste, List<int> Id_Guitares)
         {
-            //voir procedure stockee dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
+            // Créer un DataTable pour représenter le type de table TGuitareId
+            DataTable table = new DataTable();
+            table.Columns.Add("GuitareId", typeof(int));
+
+            // Remplir le DataTable avec les ID de guitares
+            foreach (int guitareId in Id_Guitares)
+            {
+                table.Rows.Add(guitareId);
+            }
+
+            // Voir la procédure stockée dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
             Command c = new Command("InsertGuitariste", true);
 
             c.AddParameter("Nom", guitariste.Nom);
-            c.AddParameter("Prenom ", guitariste.Prenom);
+            c.AddParameter("Prenom", guitariste.Prenom);
             c.AddParameter("DateNaiss", guitariste.DateNaiss);
+
+            // Utiliser le DataTable comme paramètre
+            c.AddParameter("Guitares", table);
 
             _connection.ExecuteNonQuery(c);
         }
+
+
+
 
         public bool Update(GuitaristeData guitariste, int id_Guitariste)
         {
