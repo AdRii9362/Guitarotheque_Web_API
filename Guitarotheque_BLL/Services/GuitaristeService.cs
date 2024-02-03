@@ -41,11 +41,11 @@ namespace Guitarotheque_BLL.Services
             return datalist.Select(data => GuitaristeMapper.DalGuitaristeToBll(data));
         }
 
-        public void Insert(GuitaristeModel guitariste)
+        public void Insert(GuitaristeModel guitariste, List<int> Id_Guitare)
         {
             GuitaristeData data = GuitaristeMapper.BllGuitaristeToDal(guitariste);
 
-            _guitaristeRepository.Insert(data);
+            _guitaristeRepository.Insert(data, Id_Guitare);
         }
 
         public bool Update(GuitaristeModel guitariste, int id_Guitariste)

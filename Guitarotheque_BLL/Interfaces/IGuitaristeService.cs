@@ -12,7 +12,7 @@ namespace Guitarotheque_BLL.Interfaces
     {
         GuitaristeModel Get(int Id_Guitariste);
         IEnumerable<GuitaristeModel> GetAll();
-        void Insert(GuitaristeModel guitariste);
+        void Insert(GuitaristeModel guitariste, List<int> Id_Guitare);
         bool Update(GuitaristeModel guitariste, int id_Guitariste);
         void Delete(int Id_Guitariste);
     }
