@@ -40,6 +40,8 @@ namespace Guitarotheque_DAL.Repositories
             return _connection.ExecuteReader(c, ER => ER.DbGuitareToDal());
         }
 
+       
+
         public void Insert(GuitareData guitare)
         {
             //voir procedure stockee dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
@@ -77,5 +79,7 @@ namespace Guitarotheque_DAL.Repositories
                 return false;
             }
         }
+
+        
     }
 }

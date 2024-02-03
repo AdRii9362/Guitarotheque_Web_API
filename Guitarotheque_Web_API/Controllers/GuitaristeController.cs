@@ -14,10 +14,12 @@ namespace Guitarotheque_Web_API.Controllers
     public class GuitaristeController : ControllerBase
     {
         private readonly IGuitaristeService _guitaristeService;
+        private readonly IGuitareService _guitareService;
 
-        public GuitaristeController(IGuitaristeService guitaristeService)
+        public GuitaristeController(IGuitaristeService guitaristeService, IGuitareService guitareService)
         {
             _guitaristeService = guitaristeService;
+            _guitareService = guitareService;
         }
 
         #region GetById
@@ -70,10 +72,19 @@ namespace Guitarotheque_Web_API.Controllers
         public ActionResult Insert(GuitaristeForm form)
         {
             GuitaristeModel model = form.ApiGuitaristeToBll();
-           
-            _guitaristeService.Insert(model);
 
-            return Ok();
+            // Vérification si les IDs de guitare existent
+            foreach (int guitare in form.Guitare)
+            {
+                if (!_guitareService.GuitareExists(guitare))
+                {
+                    return BadRequest($"L'ID de la guitare {guitare} n'existe pas.");
+                }
+            }
+
+                _guitaristeService.Insert(model, form.Guitare);
+                return Ok();
+
         }
 
         #endregion

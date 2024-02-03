@@ -5,5 +5,7 @@
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public DateTime DateNaiss { get; set; }
+
+        public List<int> Guitare { get; set; }
     }
 }

@@ -42,6 +42,7 @@ namespace Guitarotheque_BLL.Services
         public void Insert(GuitareModel guitare)
         {
             GuitareData data = GuitareMapper.BllGuitareToDal(guitare);
+           
 
             _guitareRepository.Insert(data);
         }
@@ -69,5 +70,13 @@ namespace Guitarotheque_BLL.Services
 
 
         }
+
+        public bool GuitareExists(int id_Guitare)
+        {
+            // Utilisez la méthode Get pour vérifier si la guitare existe
+            return _guitareRepository.Get(id_Guitare) != null;
+        }
+
+
     }
 }

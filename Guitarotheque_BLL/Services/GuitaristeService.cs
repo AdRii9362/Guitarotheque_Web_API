@@ -68,5 +68,6 @@ namespace Guitarotheque_BLL.Services
 
             return updatedGuitariste;
         }
+
     }
 }

@@ -15,5 +15,6 @@ namespace Guitarotheque_BLL.Interfaces
         void Insert(GuitareModel guitare);
         bool Update(GuitareModel guitare, int id_Guitare);
         void Delete(int id_Guitare);
+        bool GuitareExists(int id_Guitare);
     }
 }

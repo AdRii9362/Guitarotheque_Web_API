@@ -233,16 +233,16 @@ IGuitaristeService guitaristeService = new GuitaristeService(guitaristeRepositor
 
 #region Insert Guitariste
 
-GuitaristeModel guitaristeModel = new GuitaristeModel
-{
-    Nom = "Lois",
-    Prenom = "Murena",
-    DateNaiss = new DateTime(2010, 03, 01)
-};
+//GuitaristeModel guitaristeModel = new GuitaristeModel
+//{
+//    Nom = "Lois",
+//    Prenom = "Murena",
+//    DateNaiss = new DateTime(2010, 03, 01)
+//};
 
-List<int> idGuitares = new List<int> { 1,6,7 }; // Remplacez cette liste avec les ID de vos guitares
+//List<int> idGuitares = new List<int> { 1,6,7 }; // Remplacez cette liste avec les ID de vos guitares
 
-guitaristeService.Insert(guitaristeModel, idGuitares);
+//guitaristeService.Insert(guitaristeModel, idGuitares);
 
 #endregion
 

@@ -23,6 +23,7 @@ namespace Guitarotheque_Web_API.Mapper
                 Nom = form.Nom,
                 Prenom = form.Prenom,
                 DateNaiss = form.DateNaiss
+                
             };
         }
     }
