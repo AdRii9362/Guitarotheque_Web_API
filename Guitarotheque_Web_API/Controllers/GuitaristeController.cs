@@ -1,6 +1,7 @@
 ﻿using Guitarotheque_BLL.Interfaces;
 using Guitarotheque_BLL.Models;
 using Guitarotheque_BLL.Services;
+using Guitarotheque_DAL.Data;
 using Guitarotheque_Web_API.Mapper;
 using Guitarotheque_Web_API.Models.DTO;
 using Guitarotheque_Web_API.Models.Forms;
@@ -73,12 +74,18 @@ namespace Guitarotheque_Web_API.Controllers
         {
             GuitaristeModel model = form.ApiGuitaristeToBll();
 
+            // Vérification si le guitariste existe déjà
+            if (_guitaristeService.GuitaristeExists(form.Nom, form.Prenom, form.DateNaiss))
+            {
+                return BadRequest("Ce guitariste existe déjà.");
+            }
+
             // Vérification si les IDs de guitare existent
             foreach (int guitare in form.Guitare)
             {
                 if (!_guitareService.GuitareExists(guitare))
                 {
-                    return BadRequest($"L'ID de la guitare {guitare} n'existe pas.");
+                    return BadRequest($"Cette guitare n'existe pas");
                 }
             }
 

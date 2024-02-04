@@ -16,6 +16,8 @@ namespace Guitarotheque_BLL.Interfaces
         bool Update(GuitaristeModel guitariste, int id_Guitariste);
         void Delete(int Id_Guitariste);
 
-        
+        bool GuitaristeExists(string nom, string prenom, DateTime dateNaiss);
+
+
     }
 }

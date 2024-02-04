@@ -13,5 +13,10 @@ namespace Guitarotheque_DAL.Data
         public string Prenom { get; set; }
         public DateTime DateNaiss { get; set; }
 
+  
+
+
+
+
     }
 }

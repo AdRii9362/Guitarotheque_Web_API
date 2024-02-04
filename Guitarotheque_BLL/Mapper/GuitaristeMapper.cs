@@ -33,7 +33,7 @@ namespace Guitarotheque_BLL.Mapper
                 Nom = data.Nom,
                 Prenom= data.Prenom,
                 DateNaiss = data.DateNaiss
-            
+
             };
         }
     }

@@ -14,5 +14,7 @@ namespace Guitarotheque_DAL.Interfaces
         void Insert(GuitaristeData guitariste, List<int>Id_Guitare);
         bool Update(GuitaristeData guitariste, int id_Guitariste);
         void Delete(int Id_Guitariste);
+
+        public bool GuitaristeExists(string nom, string prenom, DateTime dateNaiss);
     }
 }

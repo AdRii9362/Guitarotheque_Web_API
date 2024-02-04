@@ -17,7 +17,7 @@ namespace Guitarotheque_DAL.Mapper
                 Id_Guitariste = (int)record["Id_Guitaristes"],
                 Nom = (string)record["Nom"],
                 Prenom = (string)record["Prenom"],
-                DateNaiss = (DateTime)record["DateNaiss"]
+                DateNaiss  = (DateTime)record["DateNaiss"]
             };
         }
     }

@@ -69,5 +69,11 @@ namespace Guitarotheque_BLL.Services
             return updatedGuitariste;
         }
 
+        //Methode Exists voir DAL guitaristeRepository
+        public bool GuitaristeExists(string nom, string prenom, DateTime dateNaiss)
+        {
+            return _guitaristeRepository.GuitaristeExists(nom, prenom, dateNaiss);
+        }
+
     }
 }

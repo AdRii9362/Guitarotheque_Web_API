@@ -21,7 +21,7 @@ namespace Guitarotheque_DAL.Repositories
         }
         public void Delete(int Id_Guitariste)
         {
-            Command c = new Command("DELETE FROM Guitaristes WHERE Id_Guitaristes = @id");
+            Command c = new Command("DeleteGuitariste",true);
             c.AddParameter("id", Id_Guitariste);
 
             _connection.ExecuteNonQuery(c);
@@ -37,17 +37,12 @@ namespace Guitarotheque_DAL.Repositories
 
         public IEnumerable<GuitaristeData> GetAll()
         {
-            Command c = new Command("SELECT * FROM Guitaristes");
+            Command c = new Command("GetAllGuitaristes", true);
+
+
+
             return _connection.ExecuteReader(c, ER => ER.DbGuitaristeToDal());
         }
-
-        //public IEnumerable<GuitaristeData> GetAllWithGuitare()
-        //{
-        //    Command c = new Command("SELECT * FROM Guitaristes gst " +
-        //        "LEFT JOIN MM_Guitariste_Guitare gg ON gst.Id_Guitaristes = gg.Id_Guitaristes " +
-        //        "LEFT JOIN Guitares gu ON gg.Id_Guitares = gu.Id_Guitares Where gst.Id_Guitaristes = @id");
-        //    return _connection.ExecuteReader(c, ER => ER.DbGuitaristeToDal());
-        //}
 
         public void Insert(GuitaristeData guitariste, List<int> Id_Guitares)
         {
@@ -98,6 +93,19 @@ namespace Guitarotheque_DAL.Repositories
                 return false;
             }
 
+        }
+
+        //Permet de verifier si un guitariste existe deja en verifiant nom prenom datenaiss
+        public bool GuitaristeExists(string nom, string prenom, DateTime dateNaiss)
+        {
+            Command c = new Command("SELECT COUNT(*) FROM Guitaristes WHERE Nom = @Nom AND Prenom = @Prenom AND DateNaiss = @DateNaiss");
+            c.AddParameter("Nom", nom);
+            c.AddParameter("Prenom", prenom);
+            c.AddParameter("DateNaiss", dateNaiss);
+
+            int count = (int)_connection.ExecuteScalar(c);
+
+            return count > 0;
         }
     }
 }
