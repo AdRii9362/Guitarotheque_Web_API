@@ -40,6 +40,14 @@ builder.Services.AddScoped<IGuitaristeService, GuitaristeService>();
 builder.Services.AddScoped<IMarqueRepository, MarqueRepository>();
 builder.Services.AddScoped<IMarquesService, MarquesService>();
 
+//builder ajout d'un cors pour api => angular
+builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+{
+    builder.WithOrigins("http://localhost:4200", "https://localhost:7011", "http://localhost:8100")
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials();
+}));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -50,6 +58,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//appel du cors
+app.UseCors("MyPolicy");
 
 app.UseAuthorization();
 
