@@ -10,6 +10,7 @@ namespace Guitarotheque_Web_API.Mapper
         {
             return new GuitaristeDTO()
             {
+                Id_Guitariste = guitariste.Id_Guitariste,
                 Nom = guitariste.Nom,
                 Prenom = guitariste.Prenom,
                 DateNaiss = guitariste.DateNaiss
@@ -20,6 +21,7 @@ namespace Guitarotheque_Web_API.Mapper
         {
             return new GuitaristeModel()
             {
+                Id_Guitariste = form.Id_Guitariste,
                 Nom = form.Nom,
                 Prenom = form.Prenom,
                 DateNaiss = form.DateNaiss

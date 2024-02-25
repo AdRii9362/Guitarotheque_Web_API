@@ -14,7 +14,7 @@ namespace Guitarotheque_BLL.Mapper
         {
             return new GuitaristeData()
             {
-                Id_Guitariste= model.Id_Guitariste,
+                Id_Guitariste = model.Id_Guitariste,
                 Nom = model.Nom,
                 Prenom = model.Prenom,
                 DateNaiss = model.DateNaiss
