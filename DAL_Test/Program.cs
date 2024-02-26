@@ -210,16 +210,16 @@ IGuitaristeRepository guitarist = new GuitaristeRepository(co);
 
 #region InsertGuitariste
 
-GuitaristeData guitariste = new GuitaristeData()
-{
-    Nom = "Dylan",
-    Prenom = "Vanden Bossche",
-    DateNaiss = new DateTime(1998, 09, 4)
-};
+//GuitaristeData guitariste = new GuitaristeData()
+//{
+//    Nom = "Dylan",
+//    Prenom = "Vanden Bossche",
+//    DateNaiss = new DateTime(1998, 09, 4)
+//};
 
-List<int> idGuitares = new List<int> { 1,6,7 }; // Remplacez cette liste avec les ID de vos guitares
+//List<int> idGuitares = new List<int> { 1,6,7 }; // Remplacez cette liste avec les ID de vos guitares
 
-guitarist.Insert(guitariste, idGuitares);
+//guitarist.Insert(guitariste, idGuitares);
 
 #endregion
 
@@ -230,12 +230,13 @@ guitarist.Insert(guitariste, idGuitares);
 #region UpdateGuitariste
 //GuitaristeData guitariste = new GuitaristeData()
 //{
-//    Nom = "Nicolas",
-//    Prenom = "D'Addabbo",
+//    Nom = "testok",
+//    Prenom = "testok",
 //    DateNaiss = new DateTime(2000, 06, 10)
 //};
+//List<int> idGuitares = new List<int> { 1 }; // Remplacez cette liste avec les ID de vos guitares
 
-//guitarist.Update(guitariste, 3);
+//guitarist.Update(guitariste, 36, idGuitares);
 #endregion
 
 #region GetGuitaristeById

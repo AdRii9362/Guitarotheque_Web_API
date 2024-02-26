@@ -72,8 +72,17 @@ namespace Guitarotheque_DAL.Repositories
 
 
 
-        public bool Update(GuitaristeData guitariste, int id_Guitariste)
+        public bool Update(GuitaristeData guitariste, int id_Guitariste, List<int> Id_Guitares)
         {
+            // Créer un DataTable pour représenter le type de table TGuitareId
+            DataTable table = new DataTable();
+            table.Columns.Add("GuitareId", typeof(int));
+
+            // Remplir le DataTable avec les ID de guitares
+            foreach (int guitareId in Id_Guitares)
+            {
+                table.Rows.Add(guitareId);
+            }
             //voir procedure stockee dans SQL => DB_Guitarotheque -> Programmability -> Stocked Procedure
             Command c = new Command("UpdateGuitariste", true);
 
@@ -81,6 +90,9 @@ namespace Guitarotheque_DAL.Repositories
             c.AddParameter("Nom", guitariste.Nom);
             c.AddParameter("Prenom ", guitariste.Prenom);
             c.AddParameter("DateNaiss", guitariste.DateNaiss);
+
+            // Utiliser le DataTable comme paramètre
+            c.AddParameter("Guitares", table);
 
             int NbRow = _connection.ExecuteNonQuery(c);
 
