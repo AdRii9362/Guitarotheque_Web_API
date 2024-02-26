@@ -102,23 +102,32 @@ namespace Guitarotheque_Web_API.Controllers
         [Route("{id_Guitariste}")]
         public ActionResult Update(int id_Guitariste, GuitaristeForm form)
         {
-            // Convertir le formulaire en modèle (AccessoireModel)
+            // Convertir le formulaire en modèle (GuitaristeModel)
             GuitaristeModel updatedModel = form.ApiGuitaristeToBll();
 
-            // Appeler la méthode de mise à jour dans le service
-            bool UpdatedGuitariste = _guitaristeService.Update(updatedModel, id_Guitariste);
+            // Vérification si les IDs de guitare existent
+            foreach (int guitare in form.Guitare)
+            {
+                if (!_guitareService.GuitareExists(guitare))
+                {
+                    return BadRequest($"Cette guitare n'existe pas");
+                }
+              
+            }
 
-            if (UpdatedGuitariste == true)
+            // Appeler la méthode de mise à jour dans le service avec la liste des ID de guitare
+            bool UpdatedGuitariste = _guitaristeService.Update(updatedModel, id_Guitariste, form.Guitare);
+
+            if (!UpdatedGuitariste)
             {
                 return Ok();
             }
             else
             {
-                return NotFound("Id Not Found");
+                // Si la mise à jour a échoué, retourner une réponse avec le code d'état correspondant
+                return NotFound("La mise à jour du guitariste a échoué.");
             }
-
         }
-
 
         #endregion
     }
