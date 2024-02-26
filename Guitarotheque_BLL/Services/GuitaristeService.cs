@@ -48,24 +48,15 @@ namespace Guitarotheque_BLL.Services
             _guitaristeRepository.Insert(data, Id_Guitare);
         }
 
-        public bool Update(GuitaristeModel guitariste, int id_Guitariste)
+        public bool Update(GuitaristeModel guitariste, int id_Guitariste, List<int> Id_Guitares)
         {
+            // Convertir les données du modèle BLL en données du modèle DAL
             GuitaristeData data = GuitaristeMapper.BllGuitaristeToDal(guitariste);
 
-            GuitaristeData guitaristeData = _guitaristeRepository.Get(id_Guitariste);
+            // Appeler la méthode Update de la DAL en passant les données du guitariste et la liste des ID des guitares
+            bool updatedGuitariste = _guitaristeRepository.Update(data, id_Guitariste, Id_Guitares);
 
-            if (guitaristeData == null)
-            {
-                return false;
-            }
-
-            guitaristeData.Nom = guitariste.Nom;
-            guitaristeData.Prenom = guitariste.Prenom;
-            guitaristeData.DateNaiss = guitariste.DateNaiss;
-
-
-            bool updatedGuitariste = _guitaristeRepository.Update(guitaristeData, id_Guitariste);
-
+            // Retourner le résultat de la mise à jour
             return updatedGuitariste;
         }
 
