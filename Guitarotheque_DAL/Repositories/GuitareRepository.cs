@@ -40,7 +40,20 @@ namespace Guitarotheque_DAL.Repositories
             return _connection.ExecuteReader(c, ER => ER.DbGuitareToDal());
         }
 
-       
+        public IEnumerable<GuitareData> GetByGuitariste(int id_Guitariste)
+        {
+            // Créez une commande SQL avec un paramètre pour l'identifiant du guitariste
+            Command c = new Command(@"SELECT G.*
+                                FROM Guitares G
+                                INNER JOIN MM_Guitariste_Guitare MM ON G.Id_Guitares = MM.Id_Guitares
+                                WHERE MM.Id_Guitaristes = @id");
+
+            c.AddParameter("id", id_Guitariste); // Ajoutez le paramètre pour l'identifiant du guitariste
+
+            // Exécutez la commande SQL et convertissez les résultats en objets GuitareData
+            return _connection.ExecuteReader(c, ER => ER.DbGuitareToDal());
+        }
+
 
         public void Insert(GuitareData guitare)
         {

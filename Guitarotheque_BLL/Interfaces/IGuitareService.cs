@@ -11,6 +11,7 @@ namespace Guitarotheque_BLL.Interfaces
     public interface IGuitareService
     {
         GuitareModel Get(int id_Guitare);
+        IEnumerable <GuitareModel> GetByGuitariste(int id_Guitariste);
         IEnumerable<GuitareModel> GetAll();
         void Insert(GuitareModel guitare);
         bool Update(GuitareModel guitare, int id_Guitare);

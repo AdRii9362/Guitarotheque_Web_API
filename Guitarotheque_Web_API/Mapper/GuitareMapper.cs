@@ -11,7 +11,8 @@ namespace Guitarotheque_Web_API.Mapper
         {
             return new GuitareDTO()
             {
-                Libelle=guitare.Libelle,
+                Id_Guitare = guitare.Id_Guitare,
+                Libelle =guitare.Libelle,
                 AnneeDeSortie = guitare.AnneeDeSortie,
                 Description = guitare.Description,
                 NbrCordes=guitare.NbrCordes,

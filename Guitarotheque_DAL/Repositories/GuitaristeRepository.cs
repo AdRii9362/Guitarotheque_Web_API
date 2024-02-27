@@ -119,5 +119,16 @@ namespace Guitarotheque_DAL.Repositories
 
             return count > 0;
         }
+
+        public bool GuitaristeExists(int id_Guitariste)
+        {
+            Command c = new Command("SELECT COUNT(*) FROM Guitaristes WHERE Id_Guitaristes = @Id_Guitaristes");
+            c.AddParameter("Id_Guitaristes", id_Guitariste);
+            
+
+            int count = (int)_connection.ExecuteScalar(c);
+
+            return count > 0;
+        }
     }
 }

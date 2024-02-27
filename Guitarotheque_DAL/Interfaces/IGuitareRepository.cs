@@ -10,6 +10,7 @@ namespace Guitarotheque_DAL.Interfaces
     public interface IGuitareRepository
     {
         GuitareData Get(int id_Guitare);
+        IEnumerable<GuitareData> GetByGuitariste(int id_Guitariste);
         IEnumerable<GuitareData> GetAll();
         void Insert (GuitareData guitare);
         bool Update (GuitareData guitare, int id_Guitare);

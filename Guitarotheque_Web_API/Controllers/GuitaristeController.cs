@@ -45,6 +45,7 @@ namespace Guitarotheque_Web_API.Controllers
 
             return Ok(_guitaristeService.GetAll().Select(x => x.BllGuitaristeToApi()));
         }
+
         #endregion
 
         #region Delete

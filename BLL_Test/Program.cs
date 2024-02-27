@@ -211,6 +211,19 @@ IGuitareService guitareService = new GuitareService(guitareRepository);
 
 #endregion
 
+#region GetGuitareByGuitariste
+
+int id_guitariste = 11;
+IEnumerable<GuitareModel> guitare = guitareService.GetByGuitariste(id_guitariste);
+
+foreach (GuitareModel gu in guitare)
+{
+    Console.WriteLine($"Guitare trouvée - ID: {gu.Id_Guitare}, Libelle: {gu.Libelle}, Nombre de corde: {gu.NbrCordes}, Description: {gu.Description}, Annee de sortie: {gu.AnneeDeSortie}, Prix: {gu.Prix}");
+
+}
+
+#endregion
+
 #region GetAllGuitare
 
 //IEnumerable<GuitareModel> guitare = guitareService.GetAll();

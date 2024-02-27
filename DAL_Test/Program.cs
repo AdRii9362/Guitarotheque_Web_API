@@ -189,6 +189,21 @@ IGuitareRepository guitar = new GuitareRepository(co);
 //}
 #endregion
 
+#region GetByGuitariste
+
+int guitaristeID = 11;
+GuitareData guitare = new GuitareData();
+
+IEnumerable<GuitareData> guitaredata = guitar.GetByGuitariste(guitaristeID);
+
+foreach (GuitareData gu in guitaredata)
+{
+    Console.WriteLine($"Guitare trouvée - ID: {gu.Id_Guitare}, Libelle: {gu.Libelle}, Nombre de corde: {gu.NbrCordes}, Description: {gu.Description}, Annee de sortie: {gu.AnneeDeSortie}, Prix: {gu.Prix}");
+
+}
+
+#endregion
+
 #region GetAllGuitare
 
 //IEnumerable<GuitareData> guitaredata = guitar.GetAll();

@@ -32,6 +32,12 @@ namespace Guitarotheque_BLL.Services
             return GuitareMapper.DalGuitareToBll(data);
         }
 
+        public IEnumerable<GuitareModel> GetByGuitariste(int id_Guitariste)
+        {
+            IEnumerable<GuitareData> datalist = _guitareRepository.GetByGuitariste(id_Guitariste);
+
+            return datalist.Select(data => GuitareMapper.DalGuitareToBll(data));
+        }
         public IEnumerable<GuitareModel> GetAll()
         {
             IEnumerable<GuitareData> datalist = _guitareRepository.GetAll();
@@ -77,6 +83,6 @@ namespace Guitarotheque_BLL.Services
             return _guitareRepository.Get(id_Guitare) != null;
         }
 
-
+       
     }
 }

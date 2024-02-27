@@ -1,5 +1,6 @@
 ﻿using Guitarotheque_BLL.Interfaces;
 using Guitarotheque_BLL.Models;
+using Guitarotheque_BLL.Services;
 using Guitarotheque_Web_API.Mapper;
 using Guitarotheque_Web_API.Models.DTO;
 using Guitarotheque_Web_API.Models.Forms;
@@ -13,10 +14,12 @@ namespace Guitarotheque_Web_API.Controllers
     public class GuitareController : ControllerBase
     {
         private readonly IGuitareService _guitareService;
+        private readonly IGuitaristeService _guitaristeService;
 
-        public GuitareController(IGuitareService guitareService)
+        public GuitareController(IGuitareService guitareService, IGuitaristeService guitaristeService)
         {
             _guitareService = guitareService;
+            _guitaristeService = guitaristeService;
         }
 
 
@@ -41,6 +44,36 @@ namespace Guitarotheque_Web_API.Controllers
         {
 
             return Ok(_guitareService.GetAll().Select(x => x.BllGuitareToApi()));
+        }
+        #endregion
+
+        #region GetAll
+
+        [HttpGet(nameof(GetByGuitariste))]
+
+        public ActionResult<IEnumerable<GuitareDTO>> GetByGuitariste(int id_Guitariste)
+        {
+
+            //Verification guitariste existe by ID
+            if (!_guitaristeService.GuitaristeExists(id_Guitariste))
+            {
+                return BadRequest("Ce guitariste n'existe pas.");
+            }
+            // Appelez la méthode GetByGuitariste de votre service de guitare
+            var guitares = _guitareService.GetByGuitariste(id_Guitariste);
+
+            // Vérifiez si la guitare retournée est nulle
+            if (guitares == null)
+            {
+                // Si elle est nulle, retournez une réponse NotFound
+                return NotFound();
+            }
+
+            // Convertissez la guitare en un objet DTO approprié
+            var guitaresDTO = guitares.Select(g => g.BllGuitareToApi());
+
+            // Retournez la liste des guitares DTO dans une réponse Ok
+            return Ok(guitaresDTO);
         }
         #endregion
 

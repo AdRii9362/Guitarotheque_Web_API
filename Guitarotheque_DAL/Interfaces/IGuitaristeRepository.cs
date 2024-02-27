@@ -16,5 +16,6 @@ namespace Guitarotheque_DAL.Interfaces
         void Delete(int Id_Guitariste);
 
         public bool GuitaristeExists(string nom, string prenom, DateTime dateNaiss);
+        public bool GuitaristeExists(int id_Guitariste);
     }
 }
