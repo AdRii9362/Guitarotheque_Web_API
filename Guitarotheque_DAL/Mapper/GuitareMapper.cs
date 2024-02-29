@@ -19,7 +19,8 @@ namespace Guitarotheque_DAL.Mapper
                 AnneeDeSortie = (int)record["AnneeDeSortie"],
                 Description = (string)record["Description"],
                 NbrCordes = (int)record["NbrCordes"],
-                Prix = (decimal)record["Prix"]
+                Prix = (decimal)record["Prix"],
+                UrlImage = (string)record["UrlImage"]
             };
         }
     }

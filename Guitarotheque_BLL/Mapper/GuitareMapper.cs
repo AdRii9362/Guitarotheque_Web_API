@@ -20,7 +20,8 @@ namespace Guitarotheque_BLL.Mapper
                 AnneeDeSortie = model.AnneeDeSortie,
                 Description = model.Description,
                 NbrCordes = model.NbrCordes,
-                Prix = model.Prix
+                Prix = model.Prix,
+                UrlImage = model.UrlImage
             };
         }
 
@@ -37,7 +38,8 @@ namespace Guitarotheque_BLL.Mapper
                 AnneeDeSortie = data.AnneeDeSortie,
                 Description = data.Description,
                 NbrCordes = data.NbrCordes,
-                Prix = data.Prix
+                Prix = data.Prix,
+                UrlImage= data.UrlImage
             };
         }
     }

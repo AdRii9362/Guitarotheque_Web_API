@@ -14,5 +14,6 @@ namespace Guitarotheque_DAL.Data
         public string Libelle { get; set; }
         public string Description { get; set; }
         public decimal Prix { get; set; }
+        public string UrlImage { get; set; }
     }
 }

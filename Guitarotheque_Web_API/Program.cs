@@ -3,6 +3,7 @@ using Guitarotheque_BLL.Interfaces;
 using Guitarotheque_BLL.Services;
 using Guitarotheque_DAL.Interfaces;
 using Guitarotheque_DAL.Repositories;
+using Microsoft.Extensions.FileProviders;
 using Tools;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -58,6 +59,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//rendre le fichier API images static afin de le rendre visible
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+           Path.Combine(builder.Environment.ContentRootPath, "Images")),
+    RequestPath = "/images"
+});
 
 //appel du cors
 app.UseCors("MyPolicy");

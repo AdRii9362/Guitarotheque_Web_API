@@ -16,7 +16,8 @@ namespace Guitarotheque_Web_API.Mapper
                 AnneeDeSortie = guitare.AnneeDeSortie,
                 Description = guitare.Description,
                 NbrCordes=guitare.NbrCordes,
-                Prix = guitare.Prix
+                Prix = guitare.Prix,
+                UrlImage = guitare.UrlImage
             };
         }
 
@@ -28,7 +29,8 @@ namespace Guitarotheque_Web_API.Mapper
                 AnneeDeSortie = form.AnneeDeSortie,
                 Description = form.Description,
                 NbrCordes = form.NbrCordes,
-                Prix = form.Prix
+                Prix = form.Prix,
+                UrlImage = form.UrlImage
             };
         }
     }
