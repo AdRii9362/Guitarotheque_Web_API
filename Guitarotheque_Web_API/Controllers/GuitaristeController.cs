@@ -42,15 +42,70 @@ namespace Guitarotheque_Web_API.Controllers
         [HttpGet(nameof(GetAll))]
         public ActionResult<IEnumerable<GuitaristeDTO>> GetAll()
         {
+            //{
 
-            return Ok(_guitaristeService.GetAll().Select(x => x.BllGuitaristeToApi()));
+            //    return Ok(_guitaristeService.GetAll().Select(x => x.BllGuitaristeToApi()));
+            //}
+
+
+
+            //// Récupérer tous les guitaristes
+            //var allGuitaristes = _guitaristeService.GetAll().Select(x => x.BllGuitaristeToApi()).ToList();
+
+            //// Liste pour stocker toutes les guitares de tous les guitaristes
+            //List<GuitareDTO> allGuitares = new List<GuitareDTO>();
+
+            //// Parcourir tous les guitaristes pour récupérer leurs guitares
+            //foreach (var guitariste in allGuitaristes)
+            //{
+            //    // Vérifier si le guitariste existe par ID
+            //    if (!_guitaristeService.GuitaristeExists(guitariste.Id_Guitariste))
+            //    {
+            //        // Retourner une réponse BadRequest si le guitariste n'existe pas
+            //        return BadRequest($"Le guitariste avec l'ID {guitariste.Id_Guitariste} n'existe pas.");
+            //    }
+
+            //    // Récupérer les guitares du guitariste actuel
+            //    var guitares = _guitareService.GetByGuitariste(guitariste.Id_Guitariste);
+
+            //    // Ajouter les guitares du guitariste actuel à la liste de toutes les guitares
+            //    allGuitares.AddRange(guitares.Select(g => g.BllGuitareToApi()));
+            //}
+
+            //// Créer un objet de réponse contenant tous les guitaristes et toutes les guitares
+            //var response = new
+            //{
+            //    Guitaristes = allGuitaristes,
+            //    Guitares = allGuitares
+            //};
+
+            //// Retourner la réponse
+            //return Ok(response);
+
+            // Récupérer tous les guitaristes
+            var allGuitaristes = _guitaristeService.GetAll().Select(x => x.BllGuitaristeToApi()).ToList();
+
+            // Parcourir tous les guitaristes pour récupérer leurs guitares
+            foreach (var guitariste in allGuitaristes)
+            {            
+                // Récupérer les guitares du guitariste actuel
+                var guitares = _guitareService.GetByGuitariste(guitariste.Id_Guitariste);
+
+                // Ajouter les identifiants des guitares du guitariste actuel à la liste de guitares du guitariste
+                guitariste.Guitare = guitares.Select(g => g.Id_Guitare).ToList();
+            }
+
+            // Retourner la liste des guitaristes avec les identifiants de leurs guitares associées
+            return Ok(allGuitaristes);
+
         }
+            #endregion
 
-        #endregion
 
-        #region Delete
 
-        [HttpDelete]
+            #region Delete
+
+            [HttpDelete]
         [Route("{id_Guitariste}")]
 
         public ActionResult DeleteById(int id_Guitariste)

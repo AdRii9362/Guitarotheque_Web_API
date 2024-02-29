@@ -47,7 +47,7 @@ namespace Guitarotheque_Web_API.Controllers
         }
         #endregion
 
-        #region GetAll
+        #region GetByGuitariste
 
         [HttpGet(nameof(GetByGuitariste))]
 
