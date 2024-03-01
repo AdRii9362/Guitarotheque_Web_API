@@ -6,6 +6,7 @@ using Guitarotheque_Web_API.Models.DTO;
 using Guitarotheque_Web_API.Models.Forms;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace Guitarotheque_Web_API.Controllers
 {
@@ -137,6 +138,69 @@ namespace Guitarotheque_Web_API.Controllers
             }
 
         }
+
+
+        #endregion
+
+        #region Update Image
+        [HttpPut("{id_Guitare}/UpdateImgGuitares")]
+        [Consumes("multipart/form-data")]
+        public ActionResult UpdateImgGuitares(int id_Guitare, [FromForm] GuitareImageDTO form )
+        {
+            if (!_guitareService.GuitareExists(id_Guitare))
+            {
+                return NotFound();
+            }
+
+            // Définition du répertoire pour sauvegarder les images
+            string directory = Path.Combine(Environment.CurrentDirectory, "Images");
+
+            // Définition du nom de fichier unique
+            string now = DateTime.UtcNow.ToString("yyyyMMdd");
+            string rng = Guid.NewGuid().ToString();
+            string ext = Path.GetExtension(form.GuitareImage.FileName);
+            string filename = now + "-" + rng + ext;
+
+            // Création du chemin d'accès au fichier
+            string filePath = Path.Combine(directory, filename);
+
+            // Création du chemin d'accès au fichier source
+            //string sourceFilePath = Path.Combine(directory, form.UrlImage);
+
+            // Vérifie si le fichier source existe
+            //if (!System.IO.File.Exists(sourceFilePath))
+            //{
+            //    return NotFound("Image file not found");
+            //}
+
+            // Ouverture d'un flux de lecture pour le fichier source
+
+                // Ouverture d'un flux d'écriture pour le fichier de destination
+                using (FileStream destinationStream = new FileStream(filePath, FileMode.Create))
+                {
+                // Copie du contenu du fichier source vers le fichier de destination
+                    form.GuitareImage.CopyTo(destinationStream);
+                }
+
+
+            // Mise à jour des données de la guitare avec le nom de fichier
+            GuitareModel updatedModel = new GuitareModel();
+
+            updatedModel.UrlImage = filename;
+
+            bool updatedGuitare = _guitareService.UpdateImgGuitares(updatedModel, id_Guitare);
+
+            if (updatedGuitare)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound("Id Not Found");
+            }
+        }
+
+
 
 
         #endregion

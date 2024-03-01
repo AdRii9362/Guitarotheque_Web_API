@@ -93,6 +93,23 @@ namespace Guitarotheque_DAL.Repositories
             }
         }
 
-        
+        public bool UpdateImgGuitares(GuitareData guitare, int id_Guitare)
+        {
+            Command c = new Command("UpdateImgGuitares", true);
+
+            c.AddParameter("Id_Guitare", id_Guitare);
+            c.AddParameter("UrlImage", guitare.UrlImage);
+
+            int NbRow = _connection.ExecuteNonQuery(c);
+
+            if (NbRow == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }  
+        }
     }
 }

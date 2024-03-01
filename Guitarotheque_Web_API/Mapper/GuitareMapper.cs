@@ -30,7 +30,7 @@ namespace Guitarotheque_Web_API.Mapper
                 Description = form.Description,
                 NbrCordes = form.NbrCordes,
                 Prix = form.Prix,
-                UrlImage = form.UrlImage
+                //UrlImage = form.UrlImage
             };
         }
     }

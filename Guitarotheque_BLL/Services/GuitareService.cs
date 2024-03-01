@@ -3,8 +3,10 @@ using Guitarotheque_BLL.Mapper;
 using Guitarotheque_BLL.Models;
 using Guitarotheque_DAL.Data;
 using Guitarotheque_DAL.Interfaces;
+using Guitarotheque_DAL.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,7 +57,7 @@ namespace Guitarotheque_BLL.Services
 
         public bool Update(GuitareModel guitare, int id_Guitare)
         {
-            GuitareData data = GuitareMapper.BllGuitareToDal(guitare);
+            
 
             GuitareData guitareData = _guitareRepository.Get(id_Guitare);
 
@@ -83,6 +85,24 @@ namespace Guitarotheque_BLL.Services
             return _guitareRepository.Get(id_Guitare) != null;
         }
 
-       
+        public bool UpdateImgGuitares(GuitareModel guitare, int id_Guitare)
+        {
+            
+
+            GuitareData guitareData = _guitareRepository.Get(id_Guitare);
+
+            if (guitareData == null)
+            {
+                return false;
+            }
+
+            guitareData.UrlImage = guitare.UrlImage;
+
+
+            bool updatedUrlImage = _guitareRepository.UpdateImgGuitares(guitareData, id_Guitare);
+
+            return updatedUrlImage;
+
+        }
     }
 }

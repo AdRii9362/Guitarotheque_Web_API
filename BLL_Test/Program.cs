@@ -187,6 +187,17 @@ IGuitareService guitareService = new GuitareService(guitareRepository);
 
 #endregion
 
+#region UpdateUrlImage
+
+//GuitareModel guitareModel = new GuitareModel
+//{
+//    UrlImage = "testBLL"
+//};
+//guitareService.UpdateImgGuitares(guitareModel, 1);
+//Console.WriteLine(guitareService.UpdateImgGuitares(guitareModel, 1));
+
+#endregion
+
 #region Delete Guitare
 
 //guitareService.Delete(8);

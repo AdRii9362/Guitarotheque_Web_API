@@ -15,6 +15,8 @@ namespace Guitarotheque_DAL.Interfaces
         void Insert (GuitareData guitare);
         bool Update (GuitareData guitare, int id_Guitare);
         void Delete (int id_Guitare);
+
+        bool UpdateImgGuitares(GuitareData guitare, int id_Guitare);
         
     }
 }

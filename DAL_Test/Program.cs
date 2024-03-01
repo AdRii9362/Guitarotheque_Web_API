@@ -173,6 +173,17 @@ IGuitareRepository guitar = new GuitareRepository(co);
 //guitar.Update(guitare, 5);
 #endregion
 
+#region UpdateImgGuitare
+
+//GuitareData guitare = new GuitareData()
+//{
+//    UrlImage = "test2"
+//};
+
+//guitar.UpdateImgGuitaristes(guitare, 1);
+//Console.WriteLine(guitar.UpdateImgGuitaristes(guitare, 1));
+#endregion
+
 #region GetGuitareById
 //int guitareId = 5; // Remplacez par l'ID réel que vous souhaitez récupérer.
 //GuitareData guitare = new GuitareData();
