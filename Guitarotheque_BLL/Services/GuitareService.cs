@@ -104,5 +104,12 @@ namespace Guitarotheque_BLL.Services
             return updatedUrlImage;
 
         }
+
+        public IEnumerable<GuitareModel> GetAllPagination(int pageNumber)
+        {
+            int pageSize = 9; // Taille de la page
+            IEnumerable<GuitareData> dataList = _guitareRepository.GetAllPagination(pageNumber, pageSize);
+            return dataList.Select(data => GuitareMapper.DalGuitareToBll(data));
+        }
     }
 }

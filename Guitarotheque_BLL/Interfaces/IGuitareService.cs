@@ -18,5 +18,7 @@ namespace Guitarotheque_BLL.Interfaces
         void Delete(int id_Guitare);
         bool GuitareExists(int id_Guitare);
         bool UpdateImgGuitares(GuitareModel guitare, int id_Guitare);
+
+        IEnumerable<GuitareModel> GetAllPagination(int pageNumber);
     }
 }

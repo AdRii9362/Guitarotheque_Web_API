@@ -40,6 +40,13 @@ namespace Guitarotheque_DAL.Repositories
             return _connection.ExecuteReader(c, ER => ER.DbGuitareToDal());
         }
 
+        public IEnumerable<GuitareData> GetAllPagination(int pageNumber, int pageSize)
+        {
+            int offset = (pageNumber - 1) * pageSize;
+            Command c = new Command($"SELECT * FROM Guitares ORDER BY Id_Guitares OFFSET {offset} ROWS FETCH NEXT {pageSize} ROWS ONLY");
+            return _connection.ExecuteReader(c, ER => ER.DbGuitareToDal());
+        }
+
         public IEnumerable<GuitareData> GetByGuitariste(int id_Guitariste)
         {
             // Créez une commande SQL avec un paramètre pour l'identifiant du guitariste

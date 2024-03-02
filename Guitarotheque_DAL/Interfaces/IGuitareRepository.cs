@@ -17,6 +17,9 @@ namespace Guitarotheque_DAL.Interfaces
         void Delete (int id_Guitare);
 
         bool UpdateImgGuitares(GuitareData guitare, int id_Guitare);
-        
+
+        IEnumerable<GuitareData> GetAllPagination(int pageNumber, int pageSize);
+
+
     }
 }
