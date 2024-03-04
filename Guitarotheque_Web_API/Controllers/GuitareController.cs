@@ -201,13 +201,40 @@ namespace Guitarotheque_Web_API.Controllers
         }
         #endregion
 
+        //[HttpGet(nameof(GetAllPagination))]
+        //public ActionResult<IEnumerable<GuitareDTO>> GetAllPagination(int pageNumber)
+        //{
+        //    try
+        //    {
+        //        IEnumerable<GuitareModel> guitares = _guitareService.GetAllPagination(pageNumber);
+        //        return Ok(guitares.Select(x => x.BllGuitareToApi()));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"Une erreur s'est produite : {ex.Message}");
+        //    }
+        //}
+
         [HttpGet(nameof(GetAllPagination))]
         public ActionResult<IEnumerable<GuitareDTO>> GetAllPagination(int pageNumber)
         {
             try
             {
+                // Obtenir toutes les guitares
+                IEnumerable<GuitareModel> allGuitares = _guitareService.GetAll();
+
+                // Compter le nombre total de guitares
+                int totalGuitaresCount = allGuitares.Count();
+
+                // Pagination : obtenir uniquement les guitares de la page demandée
                 IEnumerable<GuitareModel> guitares = _guitareService.GetAllPagination(pageNumber);
-                return Ok(guitares.Select(x => x.BllGuitareToApi()));
+
+                // Retourner le résultat
+                return Ok(new
+                {
+                    TotalItems = totalGuitaresCount,
+                    Guitares = guitares.Select(x => x.BllGuitareToApi())
+                });
             }
             catch (Exception ex)
             {
