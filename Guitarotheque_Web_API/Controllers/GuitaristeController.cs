@@ -92,7 +92,8 @@ namespace Guitarotheque_Web_API.Controllers
                 var guitares = _guitareService.GetByGuitariste(guitariste.Id_Guitariste);
 
                 // Ajouter les identifiants des guitares du guitariste actuel à la liste de guitares du guitariste
-                guitariste.Guitare = guitares.Select(g => g.Id_Guitare).ToList();
+                guitariste.Id_Guitare = guitares.Select(g => g.Id_Guitare).ToList();
+                guitariste.Libelle_Guitare = guitares.Select(g => g.Libelle).ToList();
             }
 
             // Retourner la liste des guitaristes avec les identifiants de leurs guitares associées

@@ -1,10 +1,17 @@
 // Étape 1: Création du builder pour configurer l'application ASP.NET Core
+using API_DemoBlazor.Tools;
 using Guitarotheque_BLL.Interfaces;
 using Guitarotheque_BLL.Services;
 using Guitarotheque_DAL.Interfaces;
 using Guitarotheque_DAL.Repositories;
+using Guitarotheque_Web_API.UserManagement.Services;
 using Microsoft.Extensions.FileProviders;
+using System.Data.SqlClient;
 using Tools;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +24,45 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//user
+builder.Services.AddTransient<SqlConnection>(cs => new SqlConnection(
+        builder.Configuration.GetConnectionString("default")));
+
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<JwtGenerator>();
+
+//Microsoft.AspNetCore.Authentication.JwtBearer
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+    options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtGenerator.secretKey)),
+            ValidateLifetime = true,
+            ValidateAudience = true,
+            ValidateIssuer = true,
+            ValidAudience = "monapp.com",
+            ValidIssuer = "monapi.com"
+        };
+    }
+    );
+
+
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("adminPolicy", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("connectedPolicy", policy => policy.RequireAuthenticatedUser());
+});
+
+builder.Services.AddCors(option => option.AddPolicy("signalRPolicy", options =>
+{
+    options.WithOrigins("http://localhost:4200").AllowCredentials().AllowAnyHeader()
+        .AllowAnyMethod();
+}));
+
 
 //builder pour la connexion
 builder.Services.AddSingleton(sp => new Connection(builder.Configuration.GetConnectionString("default")));
@@ -70,6 +116,8 @@ app.UseStaticFiles(new StaticFileOptions
 
 //appel du cors
 app.UseCors("MyPolicy");
+app.UseCors("signalRPolicy");
+
 
 app.UseAuthorization();
 

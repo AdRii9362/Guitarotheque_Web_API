@@ -241,6 +241,5 @@ namespace Guitarotheque_Web_API.Controllers
                 return StatusCode(500, $"Une erreur s'est produite : {ex.Message}");
             }
         }
-
     }
 }

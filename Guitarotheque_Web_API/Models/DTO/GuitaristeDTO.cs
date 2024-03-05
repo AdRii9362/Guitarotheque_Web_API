@@ -7,7 +7,8 @@
         public string Prenom { get; set; }
         public DateTime DateNaiss { get; set; }
 
-        public List<int> Guitare { get; set; }
+        public List<int> Id_Guitare { get; set; }
+        public List <string>Libelle_Guitare { get; set; }
 
 
     }
