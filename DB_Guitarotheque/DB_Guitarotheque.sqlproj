@@ -215,7 +215,4 @@
     <Build Include="User Defined Types\TGuitareId.sql" />
     <Build Include="Security\Permissions.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="DB_Guitarotheque.publish.xml" />
-  </ItemGroup>
 </Project>
